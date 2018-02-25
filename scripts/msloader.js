@@ -51,7 +51,7 @@ switch(currency) {
 setTimeout(function(){
 var bdy = document.getElementById("body");
 bdy.innerHTML = `
-    <p>This is the place to mine! It is still a heavy work in progress. Click to toggle on and off. Here are some numbers you may like</p>
+    <p>This is the place to mine! It is still a heavy work in progress. Click to toggle on and off. You may need to turn off your ad-block and put an exception in your antivirus to use this. Here are some numbers you may like</p>
     <div style="color:blue;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
         |<span id="hs">0</span> H/s|<span id="ah">0</span> Accepted Hashes|<span id="th">0</span> Total Hashes|
     </div>
