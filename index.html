@@ -104,7 +104,7 @@ This file will not be a mineshaft but just help create your settings and redirec
 NOTICE: This page (and only this page) does dev mining if you click the numbers so click and stay if you want to donate (It is on 25% throttle)! :) <br>
 Don't worry, this is not on the other pages, just this one since I use this too and am lazy. <br>
 There is a 1% dev fee on the other pages which is taken by the sdk I'm using. Sorry about that.
-<div  style="color:red;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
+<div  style="color:blue;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
 <!--This is here to prevent errors from occuring rn. Still a work in progress.-->
 |<span id="hs">0</span>|<span id="ah">0</span>|<span id="th">0</span>|
 </div>
@@ -127,7 +127,7 @@ There is a 1% dev fee on the other pages which is taken by the sdk I'm using. So
 <script type="text/javascript">
     var href = window.location.href;
     var urlBase = href.substring(0, href.lastIndexOf('/')) + "/";
-    stopmining();
+    //stopmining();
     setInterval(function() {
         var newurl = urlBase;
         var wa = document.getElementById("walladdr");
