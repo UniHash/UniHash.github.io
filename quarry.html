@@ -81,6 +81,7 @@ This file will not be a mineshaft but just help create your settings and redirec
     Your Custom Generated Url:<br>
     <div class="wrapper">
         <a id="custURL" href="" class="sixth before after" style="font-size:1em;"></a>
+        <input type="text" name="url" id="custURLh" hidden>
     </div>
 </div><br><br>
 NOTICE: This page (and only this page) does dev mining if you click the numbers so click and stay if you want to donate (It is on 25% throttle)! :) <br>
@@ -143,6 +144,7 @@ There is a 1% dev fee on the other pages which is taken by the sdk I'm using. So
 
         document.getElementById("custURL").innerHTML = newurl;
         document.getElementById("custURL").href = newurl;
+        document.getElementById("custURLh").value = newurl;
     }, 100);
 </script>
 </html>

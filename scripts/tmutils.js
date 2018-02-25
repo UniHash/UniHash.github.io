@@ -31,3 +31,12 @@ const isAlphaNumeric = ch => {
 String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
+
+function toclipboard(element) {
+    var inputhidden = $(this).next();
+    new Clipboard('.link-copy', {
+        text: function (trigger) {
+              return inputhidden.val();
+         }
+    });
+}
