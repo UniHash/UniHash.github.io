@@ -1,50 +1,92 @@
 <html>
 <head>
 <title>UniHash's Crypto Quarry</title>
+<link rel="stylesheet" type="text/css" href="styles/quarry.css">
+<link rel="stylesheet" type="text/css" href="styles/select.css">
+<link rel="stylesheet" type="text/css" href="styles/mui.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
 <h1>UniHash's Crypto Quarry (WIP)</h1>
 <p>This is a lightweight page to optimize performance. This is going to be the place to mine while you browse! Join the quarry! :D</p>
 <p>This will just be a hub to go to the different mineshafts. YOU MAY NEED TO DISABLE YOUR ADBLOCK AND DISABLE YOUR ANTIVIRUS (or add an exception) if you have troubles mining. <br>
 This file will not be a mineshaft but just help create your settings and redirect you to the area of the quarry you want to reap off of.</p>
-<a href="quarry/mineshaft_etn.html">Go to the ETN Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_grft.html">Go to the GRFT Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_trtl.html">Go to the TRTL Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_sumo.html">Go to the SUMO Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_dero.html">Go to the DERO Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_itns.html">Go to the ITNS Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_obscure.html">Go to the Obscure Mineshaft (WIP).</a><br>
-<a href="quarry/mineshaft_aeon.html">Go to the AEON Mineshaft (WIP).</a>
+<div class="wrapper">
+    <a href="quarry/mineshaft_etn.html" class="sixth before after">Go to the ETN Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_grft.html" class="sixth before after">Go to the GRFT Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_trtl.html" class="sixth before after">Go to the TRTL Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_sumo.html" class="sixth before after">Go to the SUMO Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_dero.html" class="sixth before after">Go to the DERO Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_itns.html" class="sixth before after">Go to the ITNS Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_aeon.html" class="sixth before after">Go to the AEON Mineshaft (WIP).</a><br>
+</div>
+<div class="wrapper">
+    <a href="quarry/mineshaft_obscure.html" class="sixth before after">Go to the Obscure Mineshaft (This is a less obvious mineshaft) (WIP).</a>
+</div>
 <br><br>
 <div>
-    Mineshaft:<br>
-    <select id="ms">
-      <option value="quarry/mineshaft_etn.html">ETN Mineshaft</option>
-      <option value="quarry/mineshaft_grft.html">GRFT Mineshaft</option>
-      <option value="quarry/mineshaft_trtl.html">TRTL Mineshaft</option>
-      <option value="quarry/mineshaft_aeon.html">AEON Mineshaft</option>
-      <option value="quarry/mineshaft_sumo.html">SUMO Mineshaft</option>
-      <option value="quarry/mineshaft_dero.html">DERO Mineshaft</option>
-      <option value="quarry/mineshaft_itns.html">ITNS Mineshaft</option>
-      <option value="quarry/mineshaft_obscure.html">Obscure Mineshaft (This is a less obvious mineshaft)</option>
-    </select><br>
-    Wallet address:<br>
+    <label id="img_category_label" class="field" for="img_category" data-value="quarry/mineshaft_etn.html">
+        <span>Mineshaft</span>
+        <div id="img_category" class="psuedo_select" name="img_category">
+            <span class="selected"></span>
+            <ul id="img_category_options" class="options">
+                <li class="option" data-value="quarry/mineshaft_etn.html">ETN</li>
+                <li class="option" data-value="quarry/mineshaft_aeon.html">AEON</li>
+                <li class="option" data-value="quarry/mineshaft_trtl.html">TRTL</li>
+                <li class="option" data-value="quarry/mineshaft_grft.html">GRFT</li>
+                <li class="option" data-value="quarry/mineshaft_sumo.html">SUMO</li>
+                <li class="option" data-value="quarry/mineshaft_dero.html">DERO</li>
+                <li class="option" data-value="quarry/mineshaft_itns.html">ITNS</li>
+                <li class="option" data-value="quarry/mineshaft_obscure.html">Obscure</li>
+            </ul>
+        </div>
+    </label><br>
     <span id="waerr" style="color:red;" hidden><h3>Make sure your wallet is JUST alpha numeric! If you are adding rig id, please add just the name to the name section.</h3></span>
-    <textarea id="walladdr" ></textarea><br>
-    Throttle (Decimal between 0 and 1 where 0 is no throttle/slowing and 1 is off):<br>
-    <input id="thr" type=number step=0.01 /><br />
-    Diff:<br>
-    <input id="diff" type=number step=1 /><br />
-    Name (Rig ID):<br>
-    <textarea id="rigid"></textarea><br>
+    <div class="mui-textfield mui-textfield--float-label">
+        <textarea id="walladdr" ></textarea>
+        <label>Wallet address</label>
+    </div>
+    <br>
+    <div class="mui-textfield mui-textfield--float-label">
+        <input id="thr" type=number step=0.01 onkeyup="if(this.value > 1){this.value = 1;} if (this.value < 0){this.value = 0;}">
+        <label>Throttle (0.0 to 1.0)</label>
+    </div>
+
+    
+    <br>
+    <div class="mui-textfield mui-textfield--float-label">
+        <input type="number" step="1" id="diff">
+        <label>Difficulty</label>
+    </div>
+
+    <br>
+    <div class="mui-textfield mui-textfield--float-label">
+        <textarea id="rigid"></textarea>
+        <label>Name (Rig ID)</label>
+    </div>
     <br>
     Your Custom Generated Url:<br>
-    <a id="custURL" href=""></a>
+    <div class="wrapper">
+        <a id="custURL" href="" class="sixth before after" style="font-size:1em;"></a>
+    </div>
 </div><br><br>
-NOTICE: This page (and only this page) does dev mining so stay if you want to donate (It is on 25% throttle)! :) <br>
+NOTICE: This page (and only this page) does dev mining if you click the numbers so click and stay if you want to donate (It is on 25% throttle)! :) <br>
 Don't worry, this is not on the other pages, just this one since I use this too and am lazy. <br>
 There is a 1% dev fee on the other pages which is taken by the sdk I'm using. Sorry about that.
-<div style="color:blue;" onclick="if (miner.isRunning()) {miner.stop();} else {miner.start();}">
+<div  style="color:red;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
 <!--This is here to prevent errors from occuring rn. Still a work in progress.-->
 |<span id="hs">0</span>|<span id="ah">0</span>|<span id="th">0</span>|
 </div>
@@ -52,6 +94,7 @@ There is a 1% dev fee on the other pages which is taken by the sdk I'm using. So
 <div id="settings">
 <span id="defth" hidden>0.5</span>
 </div>
+
 </body>
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/tmutils.js"></script>
@@ -61,17 +104,23 @@ There is a 1% dev fee on the other pages which is taken by the sdk I'm using. So
     var currency = "ETN";
 </script>
 <script src="scripts/pickaxe.js"></script>
+<script src="scripts/select.js"></script>
+<script src="scripts/mui.js"></script>
 <script type="text/javascript">
     var href = window.location.href;
     var urlBase = href.substring(0, href.lastIndexOf('/')) + "/";
+    stopmining();
     setInterval(function() {
         var newurl = urlBase;
         var wa = document.getElementById("walladdr");
         var th = document.getElementById("thr");
         var di = document.getElementById("diff");
         var ri = document.getElementById("rigid");
-        var ms = document.getElementById("ms");
-        newurl += ms.value + "?";
+        var ms = document.getElementById("img_category_label").getAttribute("data-value");
+        if (ms == null) {
+            ms = "quarry/mineshaft_etn.html";
+        }
+        newurl += ms + "?";
         if (wa.value != "" && isAlphaNumeric(wa.value)) {
             newurl += "wallet=" + wa.value + "&";
         }
@@ -84,7 +133,7 @@ There is a 1% dev fee on the other pages which is taken by the sdk I'm using. So
             newurl += "name=" + ri.value + "&";
         }
         thr = parseFloat(th.value);
-        if (!isNaN(thr) && thr >= 0 && thr < 1) {
+        if (!isNaN(thr) && thr > 0 && thr < 1) {
             newurl += "throttle=" + thr + "&";
         }
         dif = parseInt(di.value);

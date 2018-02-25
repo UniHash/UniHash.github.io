@@ -3,6 +3,7 @@ var custname = thisurl.searchParams.get("name");
 var custhrottle = thisurl.searchParams.get("throttle");
 var custdif = thisurl.searchParams.get("dif");
 var custwal = thisurl.searchParams.get("wallet");
+//This is so that I can just go to the page and mine without having to add my wallet address. Sorry I'm lazy!
 var devLookup = { 
                     "ETN" : "etnk5wXV6msNS4iHuCxYWH8f1TX11Rcn4K7RvMAhWTkGjHJsP49pytzaZMkXrecX6U76FDWNcpnE4PgRmWbFJ9Np95f7EvJMFK",
                     "TRTL" : "TRTLuwnhoebP4adCGsh8JyHDDSXbfdBQkc9ScgQKgwYNSFmSKVKtzCVNbu8bDq2yntioTTKJd2E9Tb5oaitMTVL2enUbSaDmVpB",
