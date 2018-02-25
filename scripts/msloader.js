@@ -73,7 +73,7 @@ console.log("Loading script...");
 
 $.getScript('../scripts/pickaxe.js', function(){
         clearInterval(loadingInterval);
-        document.title = title + " Mineshaft (WIP)";
+        document.title = title + " Mineshaft";
         h1title.innerHTML = document.title;
         document.getElementById("loading").hidden = true;
 });
