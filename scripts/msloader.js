@@ -33,6 +33,15 @@ switch(currency) {
     case "GRFT":
         break;
 
+    case "SUMO":
+        break;
+
+    case "DERO":
+        break;
+
+    case "ITNS":
+        break;
+
     default:
         console.log("Unknown currency!");
         currency = "ETN";
@@ -65,4 +74,4 @@ $.getScript('../scripts/pickaxe.js', function(){
         h1title.innerHTML = document.title;
         document.getElementById("loading").hidden = true;
 });
-}, 2500);
+}, 500);

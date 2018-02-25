@@ -6,7 +6,10 @@ var custwal = thisurl.searchParams.get("wallet");
 var devLookup = { 
                     "ETN" : "etnk5wXV6msNS4iHuCxYWH8f1TX11Rcn4K7RvMAhWTkGjHJsP49pytzaZMkXrecX6U76FDWNcpnE4PgRmWbFJ9Np95f7EvJMFK",
                     "TRTL" : "TRTLuwnhoebP4adCGsh8JyHDDSXbfdBQkc9ScgQKgwYNSFmSKVKtzCVNbu8bDq2yntioTTKJd2E9Tb5oaitMTVL2enUbSaDmVpB",
-                    "GRFT" : "G6qjWvMp2tdR18ojqhZX3dCGVW6X2tVbXdeP7EFWYYwCA87pbwAEohj1cpKhJXH5ZiZuXJRLbaRQ16dgTo4QFHPVB3eSTCx"
+                    "GRFT" : "G6qjWvMp2tdR18ojqhZX3dCGVW6X2tVbXdeP7EFWYYwCA87pbwAEohj1cpKhJXH5ZiZuXJRLbaRQ16dgTo4QFHPVB3eSTCx",
+                    "SUMO" : "Sumoo3jKgAr9YbcGJ8qPsq6MGXMRhEisV19Frx3sQ4zKR3gMFVDmWZ8M5t1ENLwa9ffPEEpy49dzdRa73HCfspfiELk1KXHkjhs",
+                    "ITNS" : "iz4uG4E7VmJitN92Kp5q2detJ3wPrErHEUNKvEdX5eEvPTtSjAyn2U2QVuB7wZjw39FPwnebGu9fpW6BCdpACTLa1pnARyn3a",
+                    "DERO" : "dERogZHopCAM8qeZzburDNRMUjPWGQAmGPbdiZk2DWjmD1qtiDPeXRTBXEr6tW8rAV2LmUcLFYdL1T2tErP6R6Nt1VDGonq745"
                 };
 var devCurrent = devLookup[currency.toUpperCase()];
 if (!custname) {
@@ -14,7 +17,7 @@ if (!custname) {
 } else {
     custname = "@webminer_" + custname;
 }
-if (["TRTL", "GRFT"].includes(currency.toUpperCase())) {
+if (["TRTL", "GRFT", "SUMO", "DERO", "ITNS"].includes(currency.toUpperCase())) {
     console.log("Currency does not support easy names. Working on support..");
     custname = "";
 }
@@ -29,15 +32,21 @@ if (!custhrottle || Number.parseFloat(custhrottle) == NaN || Number.parseFloat(c
 if (!custdif || (Number.parseInt(custdif) < 5000 && Number.parseInt(custdif) >= 0)) {
     custdif = 5000;
 }
-if (["GRFT", "TRTL"].includes(currency.toUpperCase())) {
+if (["SUMO", "ITNS"].includes(currency.toUpperCase())) {
+    custdif = 1000;
+}
+
+if (["GRFT", "TRTL", "DERO"].includes(currency.toUpperCase())) {
     custdif = -1;
 }
 
 currencyDifSymbol = ".";
 difSymbols = {
-    "GRFT" : "+"
+    "GRFT" : "+",
+    "SUMO" : "+",
+    "ITNS" : "+"
 };
-if (["GRFT"].includes(currency.toUpperCase())) {
+if (["GRFT", "SUMO", "ITNS"].includes(currency.toUpperCase())) {
     currencyDifSymbol = difSymbols[currency.toUpperCase()];
 }
 
