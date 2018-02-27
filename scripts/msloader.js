@@ -92,6 +92,15 @@ bdy.innerHTML = `<center>
     (You may not see stats on the pool until you get Accepted Hashes)
     <br>
     For any of your other ` + currencyName + ` needs, a good place to start is here: <a href="//coinmarketcap.com/currencies/` + currencyName + `" target="_blank">https://coinmarketcap.com/currencies/` + currencyName + `</a>. (` + currencyName + ` at coin market cap)
+    
+    <br><br>
+    <a href="https://freedoge.co.in/?r=2111470" target="_blank">
+        <img src="https://static1.freedoge.co.in/banners/468x60-3.png" alt="Free Dogecoin!">
+    </a>
+    <br><br>
+    <a href="https://freebitco.in/?r=11258973" target="_blank">
+        <img src="https://static1.freebitco.in/banners/468x60-3.png" alt="Free Bitcoin!">
+    </a>
     </center>
 `;
 var title = currency;
