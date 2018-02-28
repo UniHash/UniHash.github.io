@@ -1,0 +1,8 @@
+javascript:(function(){
+    var filename = "https://unihash.github.io/scripts/cryptohelper.js");
+    /*var filename = "http://localhost/UniHash%20Web%20Site/scripts/cryptohelper.js";*/
+    var fileref=document.createElement('script');
+    fileref.setAttribute("type","text/javascript");
+    fileref.setAttribute("src", filename);
+    document.getElementsByTagName("head")[0].appendChild(fileref);
+})();
