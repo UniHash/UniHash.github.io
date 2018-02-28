@@ -10,9 +10,27 @@ var devLookup = {
                     "GRFT" : "G6qjWvMp2tdR18ojqhZX3dCGVW6X2tVbXdeP7EFWYYwCA87pbwAEohj1cpKhJXH5ZiZuXJRLbaRQ16dgTo4QFHPVB3eSTCx",
                     "SUMO" : "Sumoo3jKgAr9YbcGJ8qPsq6MGXMRhEisV19Frx3sQ4zKR3gMFVDmWZ8M5t1ENLwa9ffPEEpy49dzdRa73HCfspfiELk1KXHkjhs",
                     "ITNS" : "iz4uG4E7VmJitN92Kp5q2detJ3wPrErHEUNKvEdX5eEvPTtSjAyn2U2QVuB7wZjw39FPwnebGu9fpW6BCdpACTLa1pnARyn3a",
-                    "DERO" : "dERogZHopCAM8qeZzburDNRMUjPWGQAmGPbdiZk2DWjmD1qtiDPeXRTBXEr6tW8rAV2LmUcLFYdL1T2tErP6R6Nt1VDGonq745"
+                    "DERO" : "dERogZHopCAM8qeZzburDNRMUjPWGQAmGPbdiZk2DWjmD1qtiDPeXRTBXEr6tW8rAV2LmUcLFYdL1T2tErP6R6Nt1VDGonq745",
+                    "COAL" : "Csk1fHUxfCsNUcqvqM3xWfW6gixb4uRKLGeTKHuEkqEw1KNaHvLJiV3dFQE6SYqHo5XvYNH8muN9XHj8nsU2MSqfBWXWV26",
+                    "FCN" : "6oaz7bq7pAhCuPiSKw5hKYey1QFv8VYhrUhkt5yZRQRTjiD5aGTTnSTF1VnWZdEX5UcamVn41rdaLYwbRdEndAGGMeqLsPy",
+                    "FNO" : "8wjbjpKucDLctKSK7Ma4WkaRhcxhUAwGaMJj22QF1bXsGX4AEvdciykRzC9UutNqpQjU1g9R6CXzq2sixDqqTVu9GiVZWdB",
+                    "KRB" : "KbnECLthCq8eahKS1YQ4AzCsx4eVRGfA3SGkRfZm9sLuLquAnSBJi9oWs9ZmkTfZzV1jwY7osUxAR7aSU9jqiypXGd41Yjc",
+                    "XLC" : "Lu8NocG6HgY3kz5a5KFTjDRkZabTrbNeUZLsqeVs8qqkfZMdsyfNATbVQV7fjZnsft4vxrEE5rtfdR9RHu26DE9MBZFFBzX",
+                    "MSR" : "5nfyeYmRjmmPZ6PoEM13FzQkSMPJJ3cLR5Wn4zhuE38e13X1XPxXcYEeZRVLDSB8itAR9uiacQvsCc8XfNLWUGhF2tZrT7Y",
+                    "STL" : "Se3hzTgpNKiDzYKeaDUFgH3YCK9nZKEufThjLi4kpTvAD7hLZUY8ctYWeb8Hfo6ado5bKDmd1YKuxdDGj6oRtxRq2tw7jZDoF"
                 };
 var devCurrent = devLookup[currency.toUpperCase()];
+/*
+    Custom name, address, and diff by:
+    var str = "%w.%d+%n";
+    var regwal = /%w/gi;
+    var regdif = /%d/gi;
+    var regnam = /%n/gi;
+    if (true) { #true if not set to remove
+        regnam = new RegExp(/./.source + regnam.source);
+    }
+    var res = str.replace(regwal, "W3Schools").replace(regdif, "").replace(regnam, "weber");
+*/
 if (!custname) {
     custname = "@webminer";
 } else {
