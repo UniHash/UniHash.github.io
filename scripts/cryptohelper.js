@@ -5,7 +5,27 @@ var fnoWallets = {
     "faucet2" : "8uorGCRgXvhh7EKJ4yMEnbWER7q9eAxVW4GJxCTZWAz2PCMAZLAaAa65Zq43BU2VPrNsfoYD2X78GZwN3SEECucGKQ8o9Et",
     "faucet3" : "8xkLuu8pCg83QvVLV4qQxbCrhv1pzTeF2aJP7piwkG2vgqYatXzx3vjSR8UrLzbxZf4i9UK3FHDaSZza8wbr6AtVLVjFuL5",
     "faucet4" : "8xtXnAesHHPeYM1x3SiY9GXUMrFPZnmpxWo2PTsFCCf2SPkTpGN7QD92UmtP232xg8MEMmeWeCTWGbiSym58U9nh1XoLoAo",
-    "faucet5" : "92UTrHPHxBRXEY8xD5CkXcFoiucyTZmvrLpnWmmPBgRGGxBFAEkxpkiKyRJjGqmdS9YRPN8kQ9FwrRE7pZszJoMePVnVumq"
+    "faucet5" : "92UTrHPHxBRXEY8xD5CkXcFoiucyTZmvrLpnWmmPBgRGGxBFAEkxpkiKyRJjGqmdS9YRPN8kQ9FwrRE7pZszJoMePVnVumq",
+    "faucet6" : "8t3z2DxSiYwfVwmeyGk2cV7NMSn5y7rSK8hVPeCuywyrA4Xhf7ebn5TbrsxEy7RJPeFPcxBePyxr121SC85gtFNwLrYEKTD",
+    "faucet7" : "92bUELoQvzJieBoR8oeFFJgbbJ9AbKUEZVLWNqU5yG9oTZRAJ9PoQAWPHYv5vFikEwRcrSFtXe4vKiF2UiX6n7rP7e5YPSF",
+    "faucet8" : "8yEoNG6StjbLQyJFSodCzP1z9nAg37oZRPs8ckVGsrTF9zt3DGYotBfMwmm1gnLosw18YmpiSNxCgNiH2g4XZSFMLkGmfow",
+    "faucet9" : "8trtz51nC5MS9zeWMtZU2QbCComPesoSdfy5wiyzwETPLzYNukmTfYp5MCurnj9iq7UCVRhzR4hRfhjmX2mBBkBaG2UsJfG",
+    "faucet10" : "8wT54xrjrJa5taZkck5PWt9U5aodEyzgkFsx2gZS9EG422xHCNhPfPpJsBX1dHNEaSCqbW9qMTaMBeU8aP9LMtsq7hpYTVT",
+    "faucet11" : "919F6YzqkSsRpPFUz8SD1uUMUQDT9PWZrjFz6253NVH52PVUunD67rsR4Wcr8sFyHvNaqwdVoS2DGGpLoycKvt5P295MSNg",
+    "faucet12" : "91BXBJ3GzThiozRqbhMiTm4Cae8F45cF66wkbxFqs7qXXhZz5QDrTW2LgpLhW4c9spVbr54Nzq7qPTSrxdDpSGrKUbws2Aq",
+    "faucet13" : "8xshnF21fUEiwpPTGBmoRu9xtisWUf2gH1hFdGMyFwCpQtrxDem1tpAc4TvDt9BWop7uJCLooxsEqCChCxPXas4VJveCxH5",
+    "faucet14" : "926HpkG2FVRVnHAdCXH4Ah3pX5AhvckonSKpCaRYxKjX8nrBBZAeby1ffp2xoYfeS7WNTNgJa6JuvWsZpd3PKxvhT9kdRe7",
+    "faucet15" : "8syRrgqgwc3UrFv9rJoV6fP8KQFXYr1tn4DhgZJB3DR3FXryuxNZiRQRV2iMXb1dsp4uCVDQJPpK5S94KK8AZEf1NuTzvza",
+    "faucet16" : "8tBW3v4YFooabKoXABZ4nWDcaGM3rktwgPNS48ALM84wKNYkx9G8Dw8GryQQKsyAEzVLZbdRbDiWMGMr6CS5tYM7R9he5MQ",
+    "faucet17" : "8t6aXfTuUpy9qyPP9XoLTxMQBFjxfnsoP3WFB6yaqcz3Cbn7hCb4SFCXptLA274oxS63i6xLLqjCB1BUZLxMun4STGyVt4N",
+    "faucet18" : "8zcWzkiEof8S15i9VtzBcECWEBKtfragtdnhUoXPcJYZF4N2skNsRESUfEh4XcrkD4Z5v25f2zS8c45NtNG3qTtQ5BDvruh",
+    "faucet19" : "92BnorLGYZyPPNUjxQbF6wFhfCjoTW2oBhzqWRZgKTCBM8PiibbctNpQnbSomamqUZFGFPU5UuLb88c3okotFdbxTFRfp4P",
+    "faucet20" : "8sPtF5LmAcog3hpK4HwSiE5aBKQ4KdBfBBaHLKPTxrF1CQ9DpCrV2nHK9pzaHetoRuLZJVbu1D6QzCTbZVRtAik5PSqN84h",
+    "faucet21" : "8sLe7YHX2eNBB1UTL4Xt4LbYspzGCnuaycSBW4Xxx7hQ6c2U2pqf4QH4jyHMnXbSHKi3jNW7Ch4jNRmiCEXkqeBPHbbygYo",
+    "faucet22" : "8tVUEz5JY4sLfpHqzLkxCJ5wP96CNE48EiUrQ4JF6X8GfotNJoqwHbWQ4zev2pixxRLZSyrm39ZeuJZ2HyhPbcE1Gs4k1Ga",
+    "faucet23" : "92Y7qnSE16u9hDB68sFhV8PLJN7ZXGvsy1atFpUXqqzwAdiRotbGouJepZzEkXNx4B4SJZhQEvuu1f3bWYoamsF48Y6M8PK",
+    "faucet24" : "8x1hrPWBrudTMviM9pW2THSVHeJ87zN25TZLxPnp2PuVfXfpguLtvzr4UKvzZb5V63b9XJiZyfWiLH4VewFpTt3aJNDWg8m",
+    "faucet25" : "8uFYC22bYSrKm4ZKfm1ZYC371h3NXxYGcGyHb67cKzqp1GUBEqSEsD8AdXvSWBrQM1J814qRsTFicjDsbCbqWcxxT74AKAd",
 }
 
 var devWallets = {
