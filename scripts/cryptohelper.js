@@ -33,7 +33,8 @@ var devWallets = {
     "XMR" : "47pfFbfcRWhjbKzLEU5iLGhVY7U6iMNdodH8r7S9MQxwYBTqaYjLZVr7pVEjunW17KXpgW5T83gjyRF2FXNyXxC73523jZJ",
     "FNO" : fnoWallets["Thaumic"],
     "LTC" : "LQ6jUyxMwUiMmKZ5fdCsJos6mHUZcpD4BE",
-    "BCN" : "271Hnm1H9qFHd4cyuvPSD1VEMM2XfqUNa4PiimGP7j9QX6NFppmPxyKfNCezqRpKfLJf5dmANoy6uA2bGtZ3uT5fJGc3cku"
+    "BCN" : "271Hnm1H9qFHd4cyuvPSD1VEMM2XfqUNa4PiimGP7j9QX6NFppmPxyKfNCezqRpKfLJf5dmANoy6uA2bGtZ3uT5fJGc3cku",
+    "XLM" : "GC3VTUGAEZSFGC4MQAVTIJR7JCFVD2EN74ZPCWKKDTLCISS2PYHKWZ2I",
 }
 
 var websites = {
@@ -41,7 +42,8 @@ var websites = {
     "monerofaucet.info" : ["XMR", "faucet.info"],
     "faucet.fonero.org" : ["FNO", "faucet.fno"],
     "litecoinfaucet.info" : ["LTC", "faucet.info"],
-    "bytecoinfaucet.info"  : ["BCN", "faucet.info"]
+    "bytecoinfaucet.info"  : ["BCN", "faucet.info"],
+    "stellarfaucet.info"  : ["XLM", "faucet.info"],
 }
 
 function loadfile(filename) {
