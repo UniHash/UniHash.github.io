@@ -44,6 +44,13 @@ var websites = {
     "litecoinfaucet.info" : ["LTC", "faucet.info"],
     "bytecoinfaucet.info"  : ["BCN", "faucet.info"],
     "stellarfaucet.info"  : ["XLM", "faucet.info"],
+    "moondoge.co.in" : ["NA", "moonfaucet"],
+    "moonliteco.in" : ["NA", "moonfaucet"],
+    "moonbit.co.in" : ["NA", "moonfaucet"],
+    "moondash.co.in" : ["NA", "moonfaucet2"],
+    "moonb.ch" : ["NA", "moonfaucet2"],
+    "bitfun.co" : ["NA", "moonfaucet2"],
+    "bonusbitcoin.co" : ["NA", "moonfaucet2"],
 }
 
 function loadfile(filename) {
@@ -66,7 +73,79 @@ function loadfile(filename) {
     }
 }
 
+function dispnone(elm) {
+    try {
+        elm.style.display = "none";
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
+var abrem = false;
+function moonfaucet() {
+    //document.getElementById("advert-space").style.display = "none";
+    dispnone(document.getElementById("advert-space-2"));
+    dispnone(document.getElementsByClassName("captchaAd")[0]);
+    dispnone(document.getElementsByClassName("hide-xs")[0]);
+    dispnone(document.getElementById("ct_MzCqgm"));
+    dispnone(document.getElementById("BannerAdLink"));
+    dispnone(document.getElementById("lhsTopAd"));
+    dispnone(document.getElementById("lhsBottomAd"));
+    dispnone(document.getElementById("rhsTopAd"));
+    dispnone(document.getElementById("rhsBottomAd"));
+    dispnone(document.getElementById("BodyPlaceholder_midMA"));
+    dispnone(document.getElementById("epmads-c5037796db527913a1a3ec3406bf93c4"));
+    var mcc = $("#middleColumn").children();
+    for(var i = 0; i < mcc.size(); i++) {
+        if (mcc[i].id == "AB" || mcc[i].id == "F4DDbN" && !abrem) {
+            dispnone(mcc[i + 1]);
+            abrem = true;
+            break;
+        }
+    }
+    var adfil = document.getElementById("adcopy_response");
+    var subformbtns = [document.getElementById("Pook6HBN"), document.getElementById("OHnn4FFjV")];
+    if (adfil && adfil.value) {
+        for (x in subformbtns) {
+            subform = subformbtns[x]
+            if(subform) {
+                subform.click();
+            }
+        }
+    } else {
+        //document.getElementById("SubmitButton").click();
+        //adfil.focus();
+    }
+}
+
+function moonfaucet2() {
+    var adclass = document.getElementsByClassName("flexBefore");
+    for (var i = 0; i < adclass.length; i++) {
+        dispnone(adclass[i]);
+    }
+    var adclass = document.getElementsByClassName("flexAfter");
+    for (var i = 0; i < adclass.length; i++) {
+        dispnone(adclass[i]);
+    }
+    var adclass = document.getElementsByClassName("flexContentAd");
+    for (var i = 0; i < adclass.length; i++) {
+        dispnone(adclass[i]);
+    }
+}
+
 function faucetinfo(wallet) {
+    var lnk = window.location.pathname;
+    var redir = false;
+    if (lnk != "/") {
+        redir = confirm("Do you want to go to the base page?");
+    }
+    if (redir) {
+        var newurlamt = (window.location.pathname.match(/\//g) || []).length
+        var newurl = "../".repeat(newurlamt);
+        window.location = newurl;
+        return;
+    }
     var faddr = document.getElementById("address");
     if (faddr) {
         faddr.value = wallet;
@@ -79,6 +158,18 @@ function faucetinfo(wallet) {
         fbutton.disabled = false;
     } else {
         console.log("No address element!");
+    }
+
+    var gresponse=document.getElementById("g-recaptcha-response");
+    var subform = document.getElementById("verify_form");
+    if (gresponse && gresponse.value && faddr && subform) {
+        subform.submit();
+    } else {
+        if (gresponse && !gresponse.value) {
+            alert("Please do the capcha first!");
+            console.log(document.getElementsByClassName("recaptcha-checkbox-checkmark"));
+            document.getElementsByClassName("recaptcha-checkbox-checkmark")[0].click()
+        }
     }
 }
 
@@ -163,6 +254,14 @@ switch(type) {
 
     case "faucet.fno":
         fnofaucet();
+        break;
+
+    case "moonfaucet":
+        moonfaucet();
+        break;
+
+    case "moonfaucet2":
+        moonfaucet2();
         break;
 
     default:
