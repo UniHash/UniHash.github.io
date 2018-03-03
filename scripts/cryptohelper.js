@@ -106,8 +106,9 @@ function moonfaucet() {
         }
     }
     var adfil = document.getElementById("adcopy_response");
+    var gresponse=document.getElementById("g-recaptcha-response");
     var subformbtns = [document.getElementById("Pook6HBN"), document.getElementById("OHnn4FFjV")];
-    if (adfil && adfil.value) {
+    if ((adfil && adfil.value) || (gresponse && gresponse.value)) {
         for (x in subformbtns) {
             subform = subformbtns[x]
             if(subform) {
@@ -135,6 +136,25 @@ function moonfaucet2() {
     var adclass = document.getElementsByClassName("flexContentAd");
     for (var i = 0; i < adclass.length; i++) {
         dispnone(adclass[i]);
+    }
+    try{
+        if (document.getElementById("ClaimModal").getAttribute("aria-hidden")) {
+            $('#ClaimModal').modal('show');
+            $("#ClaimModal").on('shown.bs.modal', function () {
+                $("#adcopy_response").focus();
+            });
+        } else {
+                $("#adcopy_response").focus();
+        }
+    } catch(e){
+        console.log(e);
+    }
+
+    if (document.getElementById("adcopy_response").value) {
+        faucetVM.instantClaim();
+        setTimeout(function(){
+            $('#FaucetClaimModal').modal('hide');
+        }, 2000);
     }
 }
 
