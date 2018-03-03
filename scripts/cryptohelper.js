@@ -107,8 +107,9 @@ function moonfaucet() {
     }
     var adfil = document.getElementById("adcopy_response");
     var gresponse=document.getElementById("g-recaptcha-response");
-    var subformbtns = [document.getElementById("Pook6HBN"), document.getElementById("OHnn4FFjV")];
+    var subformbtns = [document.getElementById("Pook6HBN"), document.getElementById("OHnn4FFjV"), document.getElementById("KhhNjjMMMNs3")];
     if ((adfil && adfil.value) || (gresponse && gresponse.value)) {
+        console.log("Selecting");
         for (x in subformbtns) {
             subform = subformbtns[x]
             if(subform) {
