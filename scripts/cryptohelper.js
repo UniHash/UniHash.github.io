@@ -78,7 +78,8 @@ function dispnone(elm) {
         elm.style.display = "none";
     }
     catch(err) {
-        console.log(err);
+        //console.log(err);
+        console.log("Could not change element!");
     }
 }
 
@@ -114,8 +115,11 @@ function moonfaucet() {
             }
         }
     } else {
-        //document.getElementById("SubmitButton").click();
-        //adfil.focus();
+        var time = document.getElementById("Timer").children[0];
+        if (time.children[0].children[0].innerHTML > 0 || time.children[1].children[0].innerHTML >= 5) {
+            document.getElementById("SubmitButton").click();
+            adfil.focus();
+        }
     }
 }
 
