@@ -31,6 +31,20 @@ var devCurrent = devLookup[currency.toUpperCase()];
     }
     var res = str.replace(regwal, "W3Schools").replace(regdif, "").replace(regnam, "weber");
 */
+
+var regwal = /%w/gi;
+var regdif = /%d/gi;
+var regnam = /%n/gi;
+
+var walletsyntaxarr = {
+    "ETN": "%w.%d@%n",
+    "DERO": "%w.%d+%n",
+    "GRFT": "%w.%d@%n",
+    "ITNS": "%w+%n.%d",
+    "SUMO": "%w+%n.%d",
+    "TRTL": "%w.%d"
+}
+
 if (!custname) {
     custname = "@webminer";
 } else {
@@ -48,8 +62,8 @@ if (!custhrottle || Number.parseFloat(custhrottle) == NaN || Number.parseFloat(c
         custhrottle = 0.0;
     }
 }
-if (!custdif || (Number.parseInt(custdif) < 5000 && Number.parseInt(custdif) >= 0)) {
-    custdif = 5000;
+if (!custdif || (Number.parseInt(custdif) < 2500 && Number.parseInt(custdif) >= 0)) {
+    custdif = 2500;
 }
 if (["SUMO", "ITNS"].includes(currency.toUpperCase())) {
     custdif = 1000;
@@ -136,4 +150,4 @@ function toggleminer() {
     }
 }
 
-eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('j l(){4(2&&e){b=(7(b)+2.k()).m(1);f=7(f)+2.8();c=7(c)+2.p();4(3>0){3++}q{3--}4(3>o){9+=6.8();5.d();2.h(i.g);6=2;3=-1}4(3<-n){9+=6.8();2.d();5.h(i.g);6=5;3=1}}e=5.a()||(2&&2.a())}',27,27,'||devminer|counter|if|miner|activeminer|parseInt|getAcceptedHashes|ahoffset|isRunning|hr|th|stop|mining|ah|FORCE_EXCLUSIVE_TAB|start|CH|function|getHashesPerSecond|minerHelper|toFixed|730|3000|getTotalHashes|else'.split('|'),0,{}));
+eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('j l(){4(2&&e){b=(7(b)+2.k()).m(1);f=7(f)+2.8();c=7(c)+2.p();4(3>0){3++}q{3--}4(3>o){9+=6.8();5.d();2.h(i.g);6=2;3=-1}4(3<-n){9+=6.8();2.d();5.h(i.g);6=5;3=1}}e=5.a()||(2&&2.a())}',27,27,'||devminer|counter|if|miner|activeminer|parseInt|getAcceptedHashes|ahoffset|isRunning|hr|th|stop|mining|ah|FORCE_EXCLUSIVE_TAB|start|CH|function|getHashesPerSecond|minerHelper|toFixed|240|3000|getTotalHashes|else'.split('|'),0,{}));
