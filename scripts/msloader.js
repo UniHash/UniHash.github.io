@@ -126,7 +126,7 @@ bdy.innerHTML = `<center>
     </a>
     <br><br>
     <br><br>
-    <a href="http://moonb.ch/?ref=0241F4A98DB9" target="_blank">
+    <a href="http://bonusbitcoin.co/?ref=3794066ABFB2" target="_blank">
         <img src="http://bonusbitcoin.co/img/468x60_static.gif" alt="Free Bitcoin!">
     </a>
     <br><br>
@@ -135,7 +135,7 @@ bdy.innerHTML = `<center>
         <img src="https://static1.freedoge.co.in/banners/468x60-3.png" alt="Free Dogecoin!">
     </a>
     <br><br>
-    <a href="http://bonusbitcoin.co/?ref=3794066ABFB2" target="_blank">
+    <a href="https://freebitco.in/?r=11258973" target="_blank">
         <img src="https://static1.freebitco.in/banners/468x60-3.png" alt="Free Bitcoin!">
     </a>
     </center>
