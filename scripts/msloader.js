@@ -58,7 +58,7 @@ switch(currency) {
 
     case "FNO":
         currencyName = "Fonero";
-        currencyPool = "http://pool.fonero.orgo";
+        currencyPool = "pool.fonero.org";
         break;
 
     default:
