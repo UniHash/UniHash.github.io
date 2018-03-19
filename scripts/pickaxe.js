@@ -52,7 +52,7 @@ if (!custname) {
 } else {
     custname = "@webminer_" + custname;
 }
-if (["TRTL", "GRFT", "SUMO", "DERO", "ITNS"].includes(currency.toUpperCase())) {
+if (["TRTL", "GRFT", "SUMO", "DERO", "ITNS", "FNO"].includes(currency.toUpperCase())) {
     console.log("Currency does not support easy names. Working on support..");
     custname = "";
 }
