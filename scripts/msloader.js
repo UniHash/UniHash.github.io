@@ -56,6 +56,11 @@ switch(currency) {
         currencyPool = "intense.hashvault.pro";
         break;
 
+    case "FNO":
+        currencyName = "Fonero";
+        currencyPool = "http://pool.fonero.orgo";
+        break;
+
     default:
         console.log("Unknown currency!");
         currency = "ETN";
