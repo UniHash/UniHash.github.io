@@ -61,6 +61,11 @@ switch(currency) {
         currencyPool = "pool.fonero.org";
         break;
 
+    case "EDL":
+        currencyName = "EDollar";
+        currencyPool = "edollar.hashvault.pro";
+        break;
+
     default:
         console.log("Unknown currency!");
         currency = "ETN";

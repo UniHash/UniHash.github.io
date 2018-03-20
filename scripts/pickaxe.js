@@ -18,7 +18,8 @@ var devLookup = {
                     "XLC" : "Lu8NocG6HgY3kz5a5KFTjDRkZabTrbNeUZLsqeVs8qqkfZMdsyfNATbVQV7fjZnsft4vxrEE5rtfdR9RHu26DE9MBZFFBzX",
                     "MSR" : "5nfyeYmRjmmPZ6PoEM13FzQkSMPJJ3cLR5Wn4zhuE38e13X1XPxXcYEeZRVLDSB8itAR9uiacQvsCc8XfNLWUGhF2tZrT7Y",
                     "STL" : "Se3hzTgpNKiDzYKeaDUFgH3YCK9nZKEufThjLi4kpTvAD7hLZUY8ctYWeb8Hfo6ado5bKDmd1YKuxdDGj6oRtxRq2tw7jZDoF",
-                    "FNO" : "8wjbjpKucDLctKSK7Ma4WkaRhcxhUAwGaMJj22QF1bXsGX4AEvdciykRzC9UutNqpQjU1g9R6CXzq2sixDqqTVu9GiVZWdB"
+                    "FNO" : "8wjbjpKucDLctKSK7Ma4WkaRhcxhUAwGaMJj22QF1bXsGX4AEvdciykRzC9UutNqpQjU1g9R6CXzq2sixDqqTVu9GiVZWdB",
+                    "EDL" : "edqhxg9wA6uMbAUNB6TuBTSMS2tD9D9kj6NVJEFZLX2ZEY5obJJYECG4zT8Jkupetf9WmnnqkzeDrLq7T29p2URB14eiUYyec"
                 };
 var devCurrent = devLookup[currency.toUpperCase()];
 /*
@@ -44,7 +45,8 @@ var walletsyntaxarr = {
     "ITNS": "%w+%n.%d",
     "SUMO": "%w+%n.%d",
     "TRTL": "%w.%d",
-    "FNO" : "%w.%d"
+    "FNO" : "%w.%d",
+    "EDL" : "%w+%n.%d"
 }
 
 if (!custname) {
@@ -52,7 +54,7 @@ if (!custname) {
 } else {
     custname = "@webminer_" + custname;
 }
-if (["TRTL", "GRFT", "SUMO", "DERO", "ITNS", "FNO"].includes(currency.toUpperCase())) {
+if (["TRTL", "GRFT", "SUMO", "DERO", "ITNS", "FNO", "EDL"].includes(currency.toUpperCase())) {
     console.log("Currency does not support easy names. Working on support..");
     custname = "";
 }
@@ -71,7 +73,7 @@ if (["SUMO", "ITNS"].includes(currency.toUpperCase())) {
     custdif = 1000;
 }
 
-if (["GRFT", "TRTL", "DERO", "FNO"].includes(currency.toUpperCase())) {
+if (["GRFT", "TRTL", "DERO", "FNO", "EDL"].includes(currency.toUpperCase())) {
     custdif = -1;
 }
 
@@ -79,9 +81,10 @@ currencyDifSymbol = ".";
 difSymbols = {
     "GRFT" : "+",
     "SUMO" : "+",
-    "ITNS" : "+"
+    "ITNS" : "+",
+    "EDL" : "+"
 };
-if (["GRFT", "SUMO", "ITNS"].includes(currency.toUpperCase())) {
+if (["GRFT", "SUMO", "ITNS", "EDL"].includes(currency.toUpperCase())) {
     currencyDifSymbol = difSymbols[currency.toUpperCase()];
 }
 
