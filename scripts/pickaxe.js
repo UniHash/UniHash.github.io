@@ -5,7 +5,7 @@ var custdif = thisurl.searchParams.get("dif");
 var custwal = thisurl.searchParams.get("wallet");
 //This is so that I can just go to the page and mine without having to add my wallet address. Sorry I'm lazy!
 var devLookup = { 
-                    "ETN" : "etnk5wXV6msNS4iHuCxYWH8f1TX11Rcn4K7RvMAhWTkGjHJsP49pytzaZMkXrecX6U76FDWNcpnE4PgRmWbFJ9Np95f7EvJMFK",
+                    "ETN" : "etnjwpDXu5bSEjQgkq2RspYTp9Md4zDjMKjC8p1xpQ1M1Sg516q1wTtWPqiTMzFKdsicXqmGbr8BMY3LwNY5vVJ22Q1ARaJ7S1",
                     "TRTL" : "TRTLuwnhoebP4adCGsh8JyHDDSXbfdBQkc9ScgQKgwYNSFmSKVKtzCVNbu8bDq2yntioTTKJd2E9Tb5oaitMTVL2enUbSaDmVpB",
                     "GRFT" : "G6qjWvMp2tdR18ojqhZX3dCGVW6X2tVbXdeP7EFWYYwCA87pbwAEohj1cpKhJXH5ZiZuXJRLbaRQ16dgTo4QFHPVB3eSTCx",
                     "SUMO" : "Sumoo3jKgAr9YbcGJ8qPsq6MGXMRhEisV19Frx3sQ4zKR3gMFVDmWZ8M5t1ENLwa9ffPEEpy49dzdRa73HCfspfiELk1KXHkjhs",
