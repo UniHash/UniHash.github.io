@@ -111,6 +111,9 @@ function moonfaucet() {
     var gresponse=document.getElementById("g-recaptcha-response");
     var subformbtns = [document.getElementById("Pook6HBN"), document.getElementById("OHnn4FFjV"), document.getElementById("KhhNjjMMMNs3")];
     if ((adfil && adfil.value) || (gresponse && gresponse.value)) {
+        if (adfil.value.length > 0 && adfil.value[adfil.value.length - 1] == "/") {
+                adfil.value = adfil.value.slice(0, -1);
+        }
         console.log("Selecting");
         for (x in subformbtns) {
             subform = subformbtns[x]
@@ -126,7 +129,7 @@ function moonfaucet() {
         } else {
             subloadcheck = setInterval(function(){
                 var time = document.getElementById("Timer").children[0];
-                if (time.children[0].children[0].innerHTML > 0 || time.children[1].children[0].innerHTML >= 5) {
+                if ((time.children[0].children[0].innerHTML > 0 || time.children[1].children[0].innerHTML >= 5) && $("#CaptchaPopup").css("display") == "none") {
                     console.log("Loading submit field...");
                     document.getElementById("SubmitButton").click();
                     adfil.focus();
@@ -139,6 +142,9 @@ function moonfaucet() {
                 var adfil = document.getElementById("adcopy_response");
                 var gresponse=document.getElementById("g-recaptcha-response");
                 if ((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) {
+                    if (adfil.value.length > 0 && adfil.value[adfil.value.length - 1] == "/") {
+                        adfil.value = adfil.value.slice(0, -1);
+                    }
                     console.log("Selecting");
                     for (x in subformbtns) {
                         subform = subformbtns[x]
@@ -154,6 +160,8 @@ function moonfaucet() {
     }
 }
 
+var submitting = false;
+var cmvis = false;
 function moonfaucet2() {
     var adclass = document.getElementsByClassName("flexBefore");
     for (var i = 0; i < adclass.length; i++) {
@@ -168,35 +176,28 @@ function moonfaucet2() {
         dispnone(adclass[i]);
     }
     try{
-        if (faucetVM.canClaim()) {
-            if (document.getElementById("ClaimModal").getAttribute("aria-hidden")) {
-                $('#ClaimModal').modal('show');
-                $("#ClaimModal").on('shown.bs.modal', function () {
-                    $("#adcopy_response").focus();
-                });
-            } else {
-                    $("#adcopy_response").focus();
-            }
-        } else {
-            if (!subloadcheck) {
-                subloadcheck = setInterval(function(){
-                    if (faucetVM.canClaim()) {
-                        console.log("Loading claim stuff...");
-                        try{
-                            $('#ClaimModal').modal('show');
-                            $("#ClaimModal").on('shown.bs.modal', function () {
-                                $("#adcopy_response").focus();
-                            });
-                        } catch(e) {
-                            console.log("Could not load claim model!");
-                        }
-                        clearInterval(subloadcheck);
-                        setTimeout(function(){
-                            //subloadcheck = false;
-                        }, 500);
+        $("#ClaimModal").on('show.bs.modal', function () {
+            cmvis = true;
+        });
+        $("#ClaimModal").on('shown.bs.modal', function () {
+            $("#adcopy_response").focus();
+        });
+        $("#ClaimModal").on('hidden.bs.modal', function () {
+            setTimeout(function(){
+                cmvis = false;
+            }, 5000);
+        });
+        if (!subloadcheck) {
+            subloadcheck = setInterval(function(){
+                if (faucetVM.canClaim() && !cmvis) {
+                    console.log("Loading claim stuff...");
+                    try{
+                        $('#ClaimModal').modal('show');
+                    } catch(e) {
+                        console.log("Could not load claim model!");
                     }
-                }, 250);
-            }
+                }
+            }, 250);
         }
     } catch(e){
         console.log(e);
@@ -205,6 +206,9 @@ function moonfaucet2() {
     var adfil = document.getElementById("adcopy_response");
     var gresponse=document.getElementById("g-recaptcha-response");
     if ((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) {
+        if (adfil.value.length > 0 && adfil.value[adfil.value.length - 1] == "/") {
+            adfil.value = adfil.value.slice(0, -1);
+        }
         console.log("Submitting...");
         faucetVM.instantClaim();
         setTimeout(function(){
@@ -215,7 +219,10 @@ function moonfaucet2() {
             submitcheck = setInterval(function(){
                 var adfil = document.getElementById("adcopy_response");
                 var gresponse=document.getElementById("g-recaptcha-response");
-                if (((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) && submitcheck) {
+                if (((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) && !submitting) {
+                    if (adfil.value.length > 0 && adfil.value[adfil.value.length - 1] == "/") {
+                        adfil.value = adfil.value.slice(0, -1);
+                    }
                     console.log("Submitting...");
                     try{
                     faucetVM.instantClaim();
@@ -225,8 +232,10 @@ function moonfaucet2() {
                     } catch(e) {
                         console.log("Could not submit.");
                     }
-                    clearInterval(submitcheck);
-                    //submitcheck = false;
+                    submitting = true;
+                    setTimeout(function() {
+                        submitting = false;
+                    }, 60000);
                 }
             }, 250);
         }
