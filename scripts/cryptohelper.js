@@ -84,6 +84,8 @@ function dispnone(elm) {
 }
 
 var abrem = false;
+var submitcheck = false;
+var subloadcheck = false;
 function moonfaucet() {
     //document.getElementById("advert-space").style.display = "none";
     dispnone(document.getElementById("advert-space-2"));
@@ -121,6 +123,33 @@ function moonfaucet() {
         if (time.children[0].children[0].innerHTML > 0 || time.children[1].children[0].innerHTML >= 5) {
             document.getElementById("SubmitButton").click();
             adfil.focus();
+        } else {
+            subloadcheck = setInterval(function(){
+                var time = document.getElementById("Timer").children[0];
+                if (time.children[0].children[0].innerHTML > 0 || time.children[1].children[0].innerHTML >= 5) {
+                    console.log("Loading submit field...");
+                    document.getElementById("SubmitButton").click();
+                    adfil.focus();
+                    clearInterval(subloadcheck);
+                }
+            }, 250);
+        }
+        if (!submitcheck) {
+            submitcheck = setInterval(function(){
+                var adfil = document.getElementById("adcopy_response");
+                var gresponse=document.getElementById("g-recaptcha-response");
+                if ((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) {
+                    console.log("Selecting");
+                    for (x in subformbtns) {
+                        subform = subformbtns[x]
+                        if(subform) {
+                            subform.click();
+                        }
+                    }
+                    clearInterval(submitcheck);
+                    submitcheck = false;
+                }
+            },250);
         }
     }
 }
@@ -139,23 +168,68 @@ function moonfaucet2() {
         dispnone(adclass[i]);
     }
     try{
-        if (document.getElementById("ClaimModal").getAttribute("aria-hidden")) {
-            $('#ClaimModal').modal('show');
-            $("#ClaimModal").on('shown.bs.modal', function () {
-                $("#adcopy_response").focus();
-            });
+        if (faucetVM.canClaim()) {
+            if (document.getElementById("ClaimModal").getAttribute("aria-hidden")) {
+                $('#ClaimModal').modal('show');
+                $("#ClaimModal").on('shown.bs.modal', function () {
+                    $("#adcopy_response").focus();
+                });
+            } else {
+                    $("#adcopy_response").focus();
+            }
         } else {
-                $("#adcopy_response").focus();
+            if (!subloadcheck) {
+                subloadcheck = setInterval(function(){
+                    if (faucetVM.canClaim()) {
+                        console.log("Loading claim stuff...");
+                        try{
+                            $('#ClaimModal').modal('show');
+                            $("#ClaimModal").on('shown.bs.modal', function () {
+                                $("#adcopy_response").focus();
+                            });
+                        } catch(e) {
+                            console.log("Could not load claim model!");
+                        }
+                        clearInterval(subloadcheck);
+                        setTimeout(function(){
+                            //subloadcheck = false;
+                        }, 500);
+                    }
+                }, 250);
+            }
         }
     } catch(e){
         console.log(e);
     }
 
-    if (document.getElementById("adcopy_response").value) {
+    var adfil = document.getElementById("adcopy_response");
+    var gresponse=document.getElementById("g-recaptcha-response");
+    if ((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) {
+        console.log("Submitting...");
         faucetVM.instantClaim();
         setTimeout(function(){
             $('#FaucetClaimModal').modal('hide');
         }, 2000);
+    } else {
+        if (!submitcheck){
+            submitcheck = setInterval(function(){
+                var adfil = document.getElementById("adcopy_response");
+                var gresponse=document.getElementById("g-recaptcha-response");
+                if (((adfil && adfil.value.match(/.+\//g)) || (gresponse && gresponse.value)) && submitcheck) {
+                    console.log("Submitting...");
+                    try{
+                    faucetVM.instantClaim();
+                    setTimeout(function(){
+                        $('#FaucetClaimModal').modal('hide');
+                    }, 2000);
+                    } catch(e) {
+                        console.log("Could not submit.");
+                    }
+                    clearInterval(submitcheck);
+                    //submitcheck = false;
+                }
+            }, 250);
+        }
     }
 }
 
@@ -259,6 +333,7 @@ var type = null;
 var wallet = null;
 if (info == null) {
     while(coin) {
+        break;
         coin = prompt("Unknown page! Please enter the currency manually.");
         wallet = devWallets[coin.toUpperCase()];
         if (wallet) {
