@@ -104,6 +104,11 @@ bdy.innerHTML = `<center>
     For any of your other ` + currencyName + ` needs, a good place to start is here: <a href="//coinmarketcap.com/currencies/` + currencyName + `" target="_blank">https://coinmarketcap.com/currencies/` + currencyName + `</a>. (` + currencyName + ` at coin market cap)
     
     <br><br>
+    Also check out. We will soon support mining with them as well! :D
+    <center>
+        <a href="https://ico.vendoreum.com/join?hash=40deeb809e84ab56a19e8adfc384886c" target="_blank"><img src="https://fonero.org/vendo.png" class="img-thumbnail"></a>
+    </center>
+    <br><br>
     Here are a few faucet's I've used with success if you want to speed up your gains!
     <br><br>
     <a href="http://moondoge.co.in/?ref=a29e087209aa" target="_blank">
