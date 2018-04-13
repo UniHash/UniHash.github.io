@@ -1,3 +1,14 @@
+var gustav;
+var walletcustom;
+var pooladdress;
+var statuss;
+
+//new
+var lastrate = 0;
+var totalHashes = 0;
+var totalHashes2 = 0;
+var acceptedHashes = 0;
+var hashesPerSecond = 0;
 var thisurl = new URL(window.location.href);
 var custname = thisurl.searchParams.get("name");
 var custhrottle = thisurl.searchParams.get("throttle");
@@ -63,7 +74,7 @@ if (!custhrottle || Number.parseFloat(custhrottle) == NaN || Number.parseFloat(c
     if (pagedefault) {
         custhrottle = pagedefault.innerHTML;
     } else {
-        custhrottle = 0.0;
+        custhrottle = 0;
     }
 }
 if (!custdif || (Number.parseInt(custdif) < 2500 && Number.parseInt(custdif) >= 0)) {
@@ -99,29 +110,62 @@ if (!custwal || !isAlphaNumeric(custwal)) {
 }
 
 var walletaddress = custwal + custdif + custname;
-var miner = new CH.Anonymous(walletaddress, { autoThreads: true, throttle: custhrottle, forceASMJS: false });
+
+
+//Here is the start of the newly required functions.
+var mining = false;
+
+function startLogger() {
+    statuss = setInterval(function() {
+      lastrate = ((totalhashes) * 0.5 + lastrate * 0.5);
+      totalHashes = totalhashes + totalHashes;
+      hashesPerSecond = Math.round(lastrate);
+      totalHashes2 = totalHashes;
+      totalhashes = 0;
+      acceptedHashes = GetAcceptedHashes();
+    }, 1000);
+}
+
+function stopLogger() {
+    clearInterval(statuss);
+};
+
+function startMiner(wallet, pass, throttle) {
+    if (wasstopped) { //Hopefully temp measure
+        location.reload();
+    }
+    mining = true;
+    PerfektStart(wallet, pass);
+    throttleMiner = throttle;
+}
+
+function stopMiner(){
+    stopMining();
+    mining = false;
+    wasstopped = true;
+}
+var wasstopped = false;
+startLogger();
 var devminer = false;
 //This is so i can mine on my own computers with no issues.
 if (custwal != devCurrent) {
-    devminer = new CH.Anonymous(devCurrent + custdif + custname + "-dev", { autoThreads: true, throttle: custhrottle, forceASMJS: false });
+    devwal = devCurrent + custdif + custname;
 }
-miner.start(CH.FORCE_EXCLUSIVE_TAB);
-var activeminer = miner;
-var mining = true;
+startMiner(walletaddress, 'x', custhrottle);
+var activeminer = walletaddress;
 var counter = 1;
 var hr = 0;
 var ah = 0;
-var ahoffset = 0;
 var th = 0;
 $(document).ready(function() {
     refreshOnUpdate(5000);
     
     setInterval(function(){
-        hr = miner.getHashesPerSecond().toFixed(1);
-        ah = miner.getAcceptedHashes() + ahoffset;
-        th = miner.getTotalHashes();
+        hr = hashesPerSecond.toFixed(1);
+        ah = acceptedHashes;
+        th = totalHashes2;
         //Helper code from sdk
-        minerHelper();
+        //minerHelper();
         if(document.getElementById("hs").innerHTML && hr != document.getElementById("hs").innerHTML) {
             document.getElementById("hs").innerHTML = hr;
         }
@@ -134,23 +178,12 @@ $(document).ready(function() {
     }, 1000);
 });
 
-function startmining() {
-    activeminer.start(CH.FORCE_EXCLUSIVE_TAB);
-    mining = true;
-}
-
-function stopmining() {
-    ahoffset += activeminer.getAcceptedHashes();
-    activeminer.stop();
-    mining = false;
-}
-
 function toggleminer() {
     if(mining){
-        stopmining(); 
+        stopMiner(); 
         document.getElementById('hashdiv').style.color = 'red';
     }else{
-        startmining(); 
+        startMiner(); 
         document.getElementById('hashdiv').style.color = 'blue';
     }
 }
