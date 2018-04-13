@@ -132,8 +132,8 @@ var bodytext = `<center>
     </a>
     <br><br>
     <br><br>
-    <a href="http://moonb.ch/?ref=0241F4A98DB9" target="_blank">
-        <img src="http://moonb.ch/coin/468x60.gif" alt="Free Bitcoin Cash!">
+    <a href="http://moonbitcoin.cash/?ref=0241F4A98DB9" target="_blank">
+        <img src="http://moonbitcoin.cash/coin/468x60.gif" alt="Free Bitcoin Cash!">
     </a>
     <br><br>
     <br><br>
