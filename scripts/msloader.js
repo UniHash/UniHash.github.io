@@ -76,7 +76,7 @@ switch(currency) {
 
 setTimeout(function(){
 var bdy = document.getElementById("body");
-bdy.innerHTML = `<center>
+var bodytext = `<center>
     Welcome to the ` + currencyName + ` Mineshaft.<br><br>
     <br>
     Current Pool Settings: <a href="//` + currencyPool + `" target="_blank">` + currencyPool + `</a><br>
@@ -102,7 +102,8 @@ bdy.innerHTML = `<center>
     (You may not see stats on the pool until you get Accepted Hashes)
     <br>
     For any of your other ` + currencyName + ` needs, a good place to start is here: <a href="//coinmarketcap.com/currencies/` + currencyName + `" target="_blank">https://coinmarketcap.com/currencies/` + currencyName + `</a>. (` + currencyName + ` at coin market cap)
-    
+    <br><br>
+    If there is an issue or an improvement that should be made, please just email <a href="mailto:unihasher@gmail.com?subject=Unihash Site">unihasher@gmail.com</a><br>
     <br><br>
     Also check out. We will soon support mining with them as well! :D
     <center>
@@ -181,10 +182,14 @@ var loadcore = setInterval(function(){
         clearInterval(loadcore);
         console.log("Got the core! Loading final script...");
         $.getScript('../scripts/pickaxe.js', function(){
-                clearInterval(loadingInterval);
+            clearInterval(loadingInterval);
+            $("#body").fadeOut("fast", function() {
+                bdy.innerHTML = bodytext;
                 document.title = title + " Mineshaft";
                 h1title.innerHTML = document.title;
                 document.getElementById("loading").hidden = true;
+                $("#body").fadeIn("slow");
+            });
         });
     }
     }, 100);
