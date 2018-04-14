@@ -48,7 +48,7 @@ var websites = {
     "moonliteco.in" : ["NA", "moonfaucet"],
     "moonbit.co.in" : ["NA", "moonfaucet"],
     "moondash.co.in" : ["NA", "moonfaucet2"],
-    "moonb.ch" : ["NA", "moonfaucet2"],
+    "moonbitcoin.cash" : ["NA", "moonfaucet2"],
     "bitfun.co" : ["NA", "moonfaucet2"],
     "bonusbitcoin.co" : ["NA", "moonfaucet2"],
 }
