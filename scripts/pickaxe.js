@@ -69,7 +69,7 @@ if (["TRTL", "GRFT", "SUMO", "DERO", "ITNS", "FNO", "EDL"].includes(currency.toU
     console.log("Currency does not support easy names. Working on support..");
     custname = "";
 }
-if (!custhrottle || Number.parseFloat(custhrottle) == NaN || Number.parseFloat(custhrottle) > 0.95) {
+if (!custhrottle || Number.parseFloat(custhrottle) == NaN || Number.parseFloat(custhrottle) > 95) {
     var pagedefault = document.getElementById("defth");
     if (pagedefault) {
         custhrottle = pagedefault.innerHTML;
