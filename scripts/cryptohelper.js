@@ -228,6 +228,7 @@ function moonfaucet2() {
                     faucetVM.instantClaim();
                     setTimeout(function(){
                         $('#FaucetClaimModal').modal('hide');
+                        location.reload();
                     }, 2000);
                     } catch(e) {
                         console.log("Could not submit.");
