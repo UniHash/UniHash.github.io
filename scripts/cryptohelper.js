@@ -160,9 +160,13 @@ function moonfaucet() {
     }
 }
 
-var submitting = false;
-var cmvis = false;
 function moonfaucet2() {
+    if (typeof submitting == 'undefined') {
+        window.submitting = false;
+    }
+    if (typeof cmvis == 'undefined') {
+        window.cmvis = false;
+    }
     var adclass = document.getElementsByClassName("flexBefore");
     for (var i = 0; i < adclass.length; i++) {
         dispnone(adclass[i]);
