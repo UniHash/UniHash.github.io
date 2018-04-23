@@ -278,10 +278,34 @@ function faucetinfo(wallet) {
     if (gresponse && gresponse.value && faddr && subform) {
         subform.submit();
     } else {
-        if (gresponse && !gresponse.value) {
-            alert("Please do the capcha first!");
-            console.log(document.getElementsByClassName("recaptcha-checkbox-checkmark"));
-            document.getElementsByClassName("recaptcha-checkbox-checkmark")[0].click()
+        if (gresponse && !gresponse.value && !submitcheck) {
+            //console.log(document.getElementsByClassName("recaptcha-checkbox-checkmark"));
+            //document.getElementsByClassName("recaptcha-checkbox-checkmark")[0].click()
+            window.clkcp = true;
+            var ifr = document.getElementsByClassName("g-recaptcha")[0].children[0].children[0].children[0].setAttribute("id", "g")
+            submitcheck = setInterval(function(){
+                var gresponse=document.getElementById("g-recaptcha-response");
+                var gcheck = document.getElementById("recaptcha-anchor");
+                if (!gresponse) {
+                    console.log("COULD NOT FIND CAPCHA V2!");
+                    clearInterval(submitcheck);
+                    return;
+                }
+                if (gresponse.value) {
+                    console.log("Submitting...");
+                    var subform = document.getElementById("verify_form");
+                    if (subform) {
+                        clearInterval(submitcheck);
+                        submitcheck = false;
+                    } else {
+                        console.log("Could not find submit button!");
+                    }
+                } else if(clkcp) {
+                    console.log("Clicking capcha...(WIP)");
+                    //document.getElementsByClassName("recaptcha-checkbox-checkmark")[0].click();
+                    clkcp = false;
+                }
+            },250);
         }
     }
 }
