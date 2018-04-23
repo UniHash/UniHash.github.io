@@ -295,6 +295,7 @@ function faucetinfo(wallet) {
                     console.log("Submitting...");
                     var subform = document.getElementById("verify_form");
                     if (subform) {
+                        subform.submit();
                         clearInterval(submitcheck);
                         submitcheck = false;
                     } else {
