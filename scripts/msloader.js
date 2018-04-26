@@ -105,11 +105,6 @@ var bodytext = `<center>
     <br><br>
     If there is an issue or an improvement that should be made, please just email <a href="mailto:unihasher@gmail.com?subject=Unihash Site">unihasher@gmail.com</a><br>
     <br><br>
-    Also check out. We will soon support mining with them as well! :D
-    <center>
-        <a href="https://ico.vendoreum.com/join?hash=40deeb809e84ab56a19e8adfc384886c" target="_blank"><img src="https://fonero.org/vendo.png" class="img-thumbnail"></a>
-    </center>
-    <br><br>
     Here are a few faucet's I've used with success if you want to speed up your gains!
     <br><br>
     <a href="http://moondoge.co.in/?ref=a29e087209aa" target="_blank">
