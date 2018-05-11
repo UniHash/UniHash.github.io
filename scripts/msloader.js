@@ -66,6 +66,11 @@ switch(currency) {
         currencyPool = "edollar.hashvault.pro";
         break;
 
+    case "ETNX":
+    	currencyName = "Electronero";
+        currencyPool = "coinmine.network";
+        break;
+
     default:
         console.log("Unknown currency!");
         currency = "ETN";
