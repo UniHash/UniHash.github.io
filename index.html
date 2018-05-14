@@ -39,6 +39,7 @@ This file will not be a mineshaft but just help create your settings and redirec
             <span class="selected"></span>
             <ul id="img_category_options" class="options">
                 <li class="option" data-value="quarry/mineshaft_etn.html">ETN</li>
+                <li class="option" data-value="quarry/mineshaft_etnx.html">ETNX</li>
                 <li class="option" data-value="quarry/mineshaft_aeon.html">AEON</li>
                 <li class="option" data-value="quarry/mineshaft_trtl.html">TRTL</li>
                 <li class="option" data-value="quarry/mineshaft_grft.html">GRFT</li>
@@ -55,6 +56,11 @@ This file will not be a mineshaft but just help create your settings and redirec
     <div class="mui-textfield mui-textfield--float-label">
         <textarea id="walladdr" ></textarea>
         <label>Wallet address</label>
+    </div>
+    <br>
+    <div class="mui-textfield mui-textfield--float-label">
+        <textarea id="pass" ></textarea>
+        <label>Password</label>
     </div>
     <br>
     <div class="mui-textfield mui-textfield--float-label">
@@ -202,6 +208,7 @@ Other faucets:
     setInterval(function() {
         var newurl = urlBase;
         var wa = document.getElementById("walladdr");
+        var ps = document.getElementById("pass");
         var th = document.getElementById("thr");
         var di = document.getElementById("diff");
         var ri = document.getElementById("rigid");
@@ -217,6 +224,9 @@ Other faucets:
             document.getElementById("waerr").hidden = false;
         } else {
             document.getElementById("waerr").hidden = true;
+        }
+        if (ps.value != "" && isAlphaNumeric(ps.value)) {
+            newurl += "pass=" + ps.value + "&";
         }
         if (ri.value != "") {
             newurl += "name=" + ri.value + "&";

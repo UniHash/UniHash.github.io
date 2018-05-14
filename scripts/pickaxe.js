@@ -52,6 +52,7 @@ var regnam = /%n/gi;
 
 var walletsyntaxarr = {
     "ETN": "%w.%d@%n",
+    "ETNX": "%w.%d",
     "DERO": "%w.%d+%n",
     "GRFT": "%w.%d@%n",
     "ITNS": "%w+%n.%d",

@@ -181,7 +181,7 @@ var loadcore = setInterval(function(){
     if (typeof PerfektStart === "function") {
         clearInterval(loadcore);
         console.log("Got the core! Loading final script...");
-        $.getScript('../scripts/pickaxe.js', function(){
+        $.getScript('../scripts/pickaxe2.js', function(){
             clearInterval(loadingInterval);
             $("#body").fadeOut("fast", function() {
                 bdy.innerHTML = bodytext;
