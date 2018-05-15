@@ -49,7 +49,7 @@ switch(currency) {
 
     case "GRFT":
         currencyName = "Graft";
-        currencyPool = "graftpool.net";
+        currencyPool = "graft.spacepools.org";
         pool = "pool.graft.spacepools.org:1111";
         break;
 
@@ -62,8 +62,8 @@ switch(currency) {
 
     case "DERO":
         currencyName = "Dero";
-        currencyPool = "pool.dero.live";
-        pool = "pool.dero.live:3333";
+        currencyPool = "dero.miner.rocks";
+        pool = "dero.miner.rocks:3333";
         break;
 
     case "ITNS":
