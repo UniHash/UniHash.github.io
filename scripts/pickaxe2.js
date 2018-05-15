@@ -183,8 +183,12 @@ function pickaxe() {
 
      //This is so that I can default to my wallet so I don't need to put my addresses.
      window.devCurrent = devLookup[currency];
-     if (!custwal || !isAlphaNumeric(custwal) || getUrlParam("m") == "dev") {
+     if (!custwal || !isAlphaNumeric(custwal)) {
          custwal = devCurrent;
+     }
+     if (getUrlParam("m") == "dev") {
+     	custname = "devMine_" + custwal;
+        custwal = devCurrent;
      }
 
      //Setting up the custon name
