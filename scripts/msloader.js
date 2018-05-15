@@ -181,8 +181,7 @@ gtag('js', new Date());
 gtag('config', 'UA-119121070-1');
 `;
 
-document.getElementsByTagName("head")[0].appendChild(gtagurl);
-document.getElementsByTagName("head")[0].appendChild(gtagcode);
+
 
 var title = currency;
 if (typeof obscure !== 'undefined' && obscure) {
@@ -217,6 +216,8 @@ var loadcore = setInterval(function(){
                 h1title.innerHTML = document.title;
                 document.getElementById("loading").hidden = true;
                 $("#body").fadeIn("slow");
+                document.getElementsByTagName("head")[0].appendChild(gtagurl);
+				document.getElementsByTagName("head")[0].appendChild(gtagcode);
             });
         });
     }
