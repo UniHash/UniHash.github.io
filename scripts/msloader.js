@@ -27,6 +27,8 @@ var currencyName = currency;
 var currencyPool = "Pool not set!";
 var pool = "Pool not set!";
 var variant = 0;
+var algo = "cn";
+var message = "";
 switch(currency) {
 	default:
         console.log("Unknown currency! Using default (ETN) instead.");
@@ -41,18 +43,21 @@ switch(currency) {
         currencyName = "Turtle";
         currencyPool = "z-pool.com";
         pool = "z-pool.com:3333";
+        variant = 1;
+        algo = "cn-lite";
         break;
 
     case "GRFT":
         currencyName = "Graft";
-        currencyPool = "www.graftpool.online";
-        pool = "pool.graftpool.online:5555";
+        currencyPool = "graftpool.net";
+        pool = "pool.graft.spacepools.org:1111";
         break;
 
     case "SUMO":
         currencyName = "Sumokoin";
         currencyPool = "sumokoin.hashvault.pro";
         pool = "pool.sumokoin.hashvault.pro:3333";
+        message = `<b style="color:red;">Sorry but Sumokoin changed its algorithm and it is currently not supported. Hopefully that will be fixed soon. For now, please mine another coin.</b>`;
         break;
 
     case "DERO":
@@ -85,6 +90,13 @@ switch(currency) {
         currencyPool = "pool.electronero.org";
         pool = "pool.electronero.org:1111";
         break;
+
+    case "AEON":
+    	currencyName = "Aeon";
+        currencyPool = "aeon-pool.com";
+        pool = "mine.aeon-pool.com:5555";
+        algo = "cn-lite"
+        break;
 }
 
 if (document.getElementById("pool") !== null && document.getElementById("pool").innerHTML) {
@@ -104,7 +116,7 @@ var bodytext = `<center>
     You may need to turn off your ad-block and put an exception in your antivirus to use this.
     <br>
     <b>Make sure you have your wallet address in the url (as the <a href="..">quarry<a> page shows) or it will not mine to your address! </b>
-    <br><br><br>
+    <br><br><br><div id="message">` + message + `</div><br>
     This represents your current CPU Hashrate:
     <div style="color:blue;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
         |<span id="hs">0</span> H/s|<span id="ah">0</span> Accepted Hashes|<span id="th">0</span> Total Hashes|
@@ -198,7 +210,7 @@ gtag('config', 'UA-119121070-1');
 var title = currency;
 console.log("Loading scripts...");
 
-var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=" + variant + "?jason=";
+var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=" + algo + "?variant=" + variant + "?jason=";
 var links = str+pool;
 
 var script = document.createElement("script");

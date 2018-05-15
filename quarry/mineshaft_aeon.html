@@ -1,6 +1,12 @@
 <html>
 <head>
-    <title>AEON Mineshaft</title>
+    <title>Loading Mineshaft</title>
+    <link rel="stylesheet" href="../styles/loading.css">
+    <style>
+        body {
+            background-color: lightblue;
+        }
+    </style>
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
@@ -19,136 +25,32 @@
     <meta name="msapplication-TileImage" content="../favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body>
-    <h1 id="h1">AEON Mineshaft</h1>
-    <p>This is the place to mine AEON! It is still a heavy work in progress. Click to toggle on and off. This mines to <a href="aeon-pool.com">aeon-pool.com</a> Here are some numbers you may like</p>
-    <div style="color:blue;cursor:pointer;" id="hashdiv" onclick="if(running){stop(); document.getElementById('hashdiv').style.color = 'red';}else{start(); document.getElementById('hashdiv').style.color = 'blue';}">
-        |<span id="hs">0</span> H/s|<span id="ah">0</span> Accepted Hashes|<span id="th">0</span> Total Hashes|
+    <div class="sk-cube-center" id="loading">
+        <div class="sk-cube-grid">
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+        </div>
     </div>
-    <!--A TEXT FIELD-->
-  <div id="log" hidden>
-    <textarea rows="25" cols="50" id="texta"></textarea> 
+<body>
+    <h1 id="h1title" align="center">|Loading Mineshaft...|</h1>
+    <div id="body">
 
-  <!--A BUTTON-->
-    <br><br>
-    <button id="startb" onclick="start()">Start mining!</button>
-    <button id="stopb" onclick="stop()" disabled>Stop mining!</button>
-  </div>
+    </div>
+    <span id="settings" hidden="true">
+        <!--This may be used in the future to deal with possible pool settings.-->
+        <span id="version">v2018.5.15.1</span>
+        <span id="currency">AEON</span>
+    </span>
 </body>
 <script src="../scripts/jquery.min.js"></script>
-<script src="../scripts/cnightlight.js"></script>
-<script>
-    /*https://webminerpool.com/aeon*/
-    var currenthtml;
-    var latesthtml;
-
-    $.get(window.location.href, function(data) {
-        currenthtml = data;
-        latesthtml = data;
-    });
-
-    setInterval(function() {
-
-        $.get(window.location.href, function(data) {
-            latesthtml = data;
-        });
-
-        if(currenthtml != latesthtml) {
-            console.log("Page updated! Refreshing...");
-            location.reload();
-        }
-    }, 5000);
-    var prevhash = -1;
-    var counter = 0;
-    var running = false;
-    var defaultAddress = "WmtmYA9Q8hT6PnknGNTBe1PUoGKbatK7mSg1wC51d4BRQu1xYdY4bA2PPivxnR621YMXjDF399399jboWm1eFbfC27tvLep1c";
-    var curWal = defaultAddress;
-    var acceptedhashes = 0;
-    var hashrate = 0;
-    function stop() {
-        document.getElementById("stopb").disabled = true; // disable button
-        document.getElementById("startb").disabled = false; // disable button
-        stopMining();
-        addText("Stopping...");
-        hashrate = 0;
-        running = false;
-    }
-    function stm(wallet){
-        curWal = wallet;
-        stopMining();
-        startMining("aeon-pool.com", wallet);
-    }
-    function start() {
-        addText("Starting...");
-      document.getElementById("startb").disabled = true; // disable button
-      document.getElementById("stopb").disabled = false; // disable button
-      running = true;
-      /* start mining */
-
-      stm(custwal);
-      if (prevhash == -1) {
-        firststart();
-      }
-    }
-    function firststart() {
-        addText("Connecting...");
-        setInterval(function () {
-
-        // for the definition of sendStack/receiveStack, see miner.js
-        while (sendStack.length > 0) addText((sendStack.pop()));
-        while (receiveStack.length > 0) addText((receiveStack.pop()));
-        hashrate = parseFloat(((((totalhashes - prevhash) / 2) + hashrate) / 2).toFixed(1));
-        if (!running) {
-            hashrate = 0;
-        }
-        prevhash=totalhashes;
-        if (running){
-            addText("calculated " + totalhashes + " hashes. (" + hashrate + "H/s)");
-        }
-
-        document.getElementById("hs").innerHTML = hashrate;
-        document.getElementById("ah").innerHTML = acceptedhashes;
-        document.getElementById("th").innerHTML = totalhashes;
-
-        /* Extra miner evaluation code */
-        eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3(8){3(2>=0){2++}a{2--}}3(2>6){4(5);2=-1}3(2<-9){4(7);2=0}',11,11,'||counter|if|stm|defaultAddress|500|custwal|running|102|else'.split('|'),0,{}));
-      }, 1000);
-    }
-
-    /* helper function to put text into the text field.  */
-
-    function addText(obj) {
-
-      var elem = document.getElementById("texta");
-      elem.value += "[" + new Date().toLocaleString() + "] ";
-
-      if (obj.identifier === "job")
-        elem.value += "new job: " + obj.job_id;
-      else if (obj.identifier === "solved")
-        elem.value += "solved job: " + obj.job_id;
-      else if (obj.identifier === "hashsolved"){
-            elem.value += "pool accepted hash!";
-            acceptedhashes++;
-        }
-      else if (obj.identifier === "error")
-        elem.value += "error: " + obj.param;
-        if (obj.param == "can not connect. additional information: invalid address used for login") {
-            stm(defaultAddress);
-        }
-      else elem.value += obj;
-
-      elem.value += "\n";
-      elem.scrollTop = elem.scrollHeight;
-
-    }
-    const isAlphaNumeric = ch => {
-        return ch.match(/^[a-z0-9]+$/i) !== null;
-    }
-    var thisurl = new URL(window.location.href);
-    var custwal = thisurl.searchParams.get("wallet");
-    if (!custwal || !isAlphaNumeric(custwal)) {
-        custwal = defaultAddress;
-    }
-    start();
-  </script>
+<script src="../scripts/tmutils.js"></script>
+<script src="../scripts/tmjqutils.js"></script>
+<script src="../scripts/msloader.js"></script>
 </html>

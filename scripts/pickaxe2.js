@@ -12,7 +12,8 @@ var walletsyntaxarr = {
     "SUMO": "%w+%n.%d",
     "TRTL": "%w.%d",
     "FNO" : "%w.%d",
-    "EDL" : "%w+%n.%d"
+    "EDL" : "%w+%n.%d",
+    "AEON" : "%w.%d",
 }
 //This is so that I can just go to the page and mine without having to add my wallet address. Sorry I'm lazy!
 var devLookup = { 
@@ -31,12 +32,14 @@ var devLookup = {
      "MSR" : "5nfyeYmRjmmPZ6PoEM13FzQkSMPJJ3cLR5Wn4zhuE38e13X1XPxXcYEeZRVLDSB8itAR9uiacQvsCc8XfNLWUGhF2tZrT7Y",
      "STL" : "Se3hzTgpNKiDzYKeaDUFgH3YCK9nZKEufThjLi4kpTvAD7hLZUY8ctYWeb8Hfo6ado5bKDmd1YKuxdDGj6oRtxRq2tw7jZDoF",
      "FNO" : "8wjbjpKucDLctKSK7Ma4WkaRhcxhUAwGaMJj22QF1bXsGX4AEvdciykRzC9UutNqpQjU1g9R6CXzq2sixDqqTVu9GiVZWdB",
-     "EDL" : "edqhxg9wA6uMbAUNB6TuBTSMS2tD9D9kj6NVJEFZLX2ZEY5obJJYECG4zT8Jkupetf9WmnnqkzeDrLq7T29p2URB14eiUYyec"
+     "EDL" : "edqhxg9wA6uMbAUNB6TuBTSMS2tD9D9kj6NVJEFZLX2ZEY5obJJYECG4zT8Jkupetf9WmnnqkzeDrLq7T29p2URB14eiUYyec",
+     "AEON" : "WmtmYA9Q8hT6PnknGNTBe1PUoGKbatK7mSg1wC51d4BRQu1xYdY4bA2PPivxnR621YMXjDF399399jboWm1eFbfC27tvLep1c",
 };
 var mindif = {
      "ETN" : 2500,
+     "GRFT" : 2500,
      "SUMO" : 1000, 
-     "ITNS" : 1000
+     "ITNS" : 1000,
 }
 
 var basename = "UHwebminer";
@@ -104,6 +107,10 @@ function getUrlParam(param) {
 }
 
 function parseWallet(pattern, wallet, difficulty, name) {
+    if (!pattern) {
+        console.log("WARNING: No pattern found!");
+        return wallet;
+    }
      var nregdif = regdif;
      if (difficulty == "") {
           nregdif = new RegExp(/./.source + regdif.source);
@@ -120,6 +127,12 @@ function parseWallet(pattern, wallet, difficulty, name) {
 function pickaxe() {
      //console.log("Starting pickaxe...");
      currency = currency.toUpperCase();
+    if (currency == "SUMO") {
+        mining = true;
+        setTimeout(function(){ toggleminer(); }, 1000);
+        console.log("Sumo changed algo and is not supported atm!");
+        return;
+    }
      window.custname = getUrlParam("name");
      window.custhrottle = getUrlParam("throttle");
      window.custdif = getUrlParam("dif");
