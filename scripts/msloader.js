@@ -80,7 +80,7 @@ switch(currency) {
 
     case "ETNX":
     	currencyName = "Electronero";
-        currencyPool = "coinmine.network";
+        currencyPool = "pool.electronero.org";
         pool = "pool.electronero.org:1111";
         break;
 }
