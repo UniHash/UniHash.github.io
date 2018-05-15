@@ -64,6 +64,7 @@ switch(currency) {
         currencyName = "Dero";
         currencyPool = "dero.miner.rocks";
         pool = "dero.miner.rocks:3333";
+        message = `<b>If dero does not start, please refresh the page. There are some issues with dero which I am trying to solve.</b>`;
         break;
 
     case "ITNS":
