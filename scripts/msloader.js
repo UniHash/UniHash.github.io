@@ -184,15 +184,6 @@ gtag('config', 'UA-119121070-1');
 
 
 var title = currency;
-if (typeof obscure !== 'undefined' && obscure) {
-    bdy.innerHTML = `
-    <p>This is a test site. It is still a heavy work in progress. Click to toggle on and off. Here are some numbers you may like</p>
-    <div style="color:blue;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
-        |<span id="hs">0</span>|<span id="ah">0</span>|<span id="th">0</span>|
-    </div>
-`;
-title = "Test";
-}
 console.log("Loading scripts...");
 
 var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=0?jason=";
@@ -211,7 +202,17 @@ var loadcore = setInterval(function(){
         $.getScript('../scripts/pickaxe2.js', function(){
             clearInterval(loadingInterval);
             $("#body").fadeOut("fast", function() {
-                bdy.innerHTML = bodytext;
+            	if (typeof obscure !== 'undefined' && obscure) {
+            		title = "Test";
+		        	bdy.innerHTML = `
+					    <p>This is a test site. It is still a heavy work in progress. Click to toggle on and off. Here are some numbers you may like</p>
+					    <div style="color:blue;cursor:pointer;" id="hashdiv" onclick="toggleminer();">
+					        |<span id="hs">0</span>|<span id="ah">0</span>|<span id="th">0</span>|
+					    </div>
+					`;
+		        } else {
+		            bdy.innerHTML = bodytext;
+		        }
                 document.title = title + " Mineshaft";
                 h1title.innerHTML = document.title;
                 document.getElementById("loading").hidden = true;
