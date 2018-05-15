@@ -1,6 +1,8 @@
+//These are the base settings
 var regwal = /%w/gi;
 var regdif = /%d/gi;
 var regnam = /%n/gi;
+
 var walletsyntaxarr = {
     "ETN": "%w.%d@%n",
     "ETNX": "%w.%d",

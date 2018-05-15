@@ -25,58 +25,68 @@ if (!currency) {
 
 var currencyName = currency;
 var currencyPool = "Pool not set!";
+var pool = "Pool not set!";
 switch(currency) {
+	default:
+        console.log("Unknown currency! Using default (ETN) instead.");
+        currency = "ETN";
     case "ETN":
         currencyName = "Electroneum";
         currencyPool = "etn.spacepools.org";
+        pool = "pool.etn.spacepools.org:1111";
         break;
 
     case "TRTL":
         currencyName = "Turtle";
         currencyPool = "z-pool.com";
+        pool = "z-pool.com:3333";
         break;
 
     case "GRFT":
         currencyName = "Graft";
         currencyPool = "www.graftpool.online";
+        pool = "pool.graftpool.online:5555";
         break;
 
     case "SUMO":
         currencyName = "Sumokoin";
         currencyPool = "sumokoin.hashvault.pro";
+        pool = "pool.sumokoin.hashvault.pro:3333";
         break;
 
     case "DERO":
         currencyName = "Dero";
         currencyPool = "pool.dero.live";
+        pool = "pool.dero.live:3333";
         break;
 
     case "ITNS":
         currencyName = "Intense";
         currencyPool = "intense.hashvault.pro";
+        pool = "pool.intense.hashvault.pro:3333";
         break;
 
     case "FNO":
         currencyName = "Fonero";
         currencyPool = "pool.fonero.org";
+        pool = "pool.fonero.org:3333";
         break;
 
     case "EDL":
         currencyName = "EDollar";
         currencyPool = "edollar.hashvault.pro";
+        pool = "pool.edollar.hashvault.pro:3333";
         break;
 
     case "ETNX":
     	currencyName = "Electronero";
         currencyPool = "coinmine.network";
+        pool = "pool.electronero.org:1111";
         break;
+}
 
-    default:
-        console.log("Unknown currency!");
-        currency = "ETN";
-        currencyName = "Electroneum";
-        currencyPool = "etn.spacepools.org";
-        break;
+if (document.getElementById("pool") !== null && document.getElementById("pool").innerHTML) {
+	pool = document.getElementById("pool").innerHTML;
 }
 
 setTimeout(function(){
@@ -187,7 +197,6 @@ var title = currency;
 console.log("Loading scripts...");
 
 var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=0?jason=";
-var pool = document.getElementById("pool").innerHTML;
 var links = str+pool;
 
 var script = document.createElement("script");
