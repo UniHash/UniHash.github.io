@@ -26,6 +26,7 @@ if (!currency) {
 var currencyName = currency;
 var currencyPool = "Pool not set!";
 var pool = "Pool not set!";
+var variant = 0;
 switch(currency) {
 	default:
         console.log("Unknown currency! Using default (ETN) instead.");
@@ -64,6 +65,7 @@ switch(currency) {
         currencyName = "Intense";
         currencyPool = "intense.hashvault.pro";
         pool = "pool.intense.hashvault.pro:3333";
+        variant = 1;
         break;
 
     case "FNO":
@@ -196,7 +198,7 @@ gtag('config', 'UA-119121070-1');
 var title = currency;
 console.log("Loading scripts...");
 
-var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=0?jason=";
+var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=cn?variant=" + variant + "?jason=";
 var links = str+pool;
 
 var script = document.createElement("script");

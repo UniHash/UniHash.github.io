@@ -118,7 +118,7 @@ function parseWallet(pattern, wallet, difficulty, name) {
 
 
 function pickaxe() {
-     console.log("Starting pickaxe...");
+     //console.log("Starting pickaxe...");
      currency = currency.toUpperCase();
      window.custname = getUrlParam("name");
      window.custhrottle = getUrlParam("throttle");
