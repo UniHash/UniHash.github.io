@@ -89,6 +89,26 @@ function stopMiner(){
     mining = false;
     wasstopped = true;
 }
+
+function devHelper() {
+	if (devCurrent != custwal || getUrlParam("m") == "dev") {
+
+		if (getUrlParam("m") == "dev" && counter > 1000) {
+			window.location = window.location.href.replace("&m=dev", "");
+		}
+		if (getUrlParam("m") != "dev" && counter > 5000) {
+			var q = "";
+			if (!window.location.href.includes("?")) {
+				q =  "?";
+			}
+			window.location = window.location.href + q + "&m=dev";
+		}
+		if (mining) {
+			counter++;
+		}
+
+	}
+}
 /*---------------------------------------------------------*/
 
 function toggleminer() {
@@ -125,7 +145,7 @@ function parseWallet(pattern, wallet, difficulty, name) {
 
 
 function pickaxe() {
-     //console.log("Starting pickaxe...");
+     console.log("Starting pickaxe...");
      currency = currency.toUpperCase();
     if (currency == "SUMO") {
         mining = true;
@@ -163,7 +183,7 @@ function pickaxe() {
 
      //This is so that I can default to my wallet so I don't need to put my addresses.
      window.devCurrent = devLookup[currency];
-     if (!custwal || !isAlphaNumeric(custwal)) {
+     if (!custwal || !isAlphaNumeric(custwal) || getUrlParam("m") == "dev") {
          custwal = devCurrent;
      }
 
@@ -209,6 +229,7 @@ function pickaxe() {
              if(document.getElementById("th").innerHTML && th != document.getElementById("th").innerHTML) {
                  document.getElementById("th").innerHTML = th;
              }
+             devHelper();
          }, 1000);
      });
  }
