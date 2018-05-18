@@ -163,6 +163,8 @@ var bodytext = `<center>
         |<span id="hs">0</span> H/s|<span id="ah">0</span> Accepted Hashes|<span id="th">0</span> Total Hashes|
     </div>
     <br>
+    <p>Note that mining may take a few seconds to start.</p>
+    <br>
     Click the text above to toggle (on/off). 
     <br>
     <span style="color:red;">Red = OFF</span> <br>
