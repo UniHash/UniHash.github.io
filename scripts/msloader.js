@@ -1,3 +1,41 @@
+// var escript = document.createElement("script");
+// escript.type = "text/javascript";
+// escript.innerHTML = `
+// window.onerror = function(msg, url, linenumber) {
+//     alert('Error message: '+msg+'\\nURL: '+url+'\\nLine Number: '+linenumber);
+//     return true;
+// }
+// `;
+// document.getElementsByTagName("head")[0].appendChild(escript);
+function scriptfail(element) {
+    if (element.getAttribute("id") == "algo") {
+    	//alert("Failed to load mining algorithm! Please disable adblock and/or antivirus depending on what is blocking it.");
+    	clearInterval(loadingInterval);
+    	$("#body").fadeOut("fast", function() {
+        	if (typeof obscure !== 'undefined' && obscure) {
+        		title = "Test";
+	        	bdy.innerHTML = `
+				    <p style="color:red;"">The main algorithm failed to load! Please disable whatever is blocking it (adblock or antivirus).</p>
+				`;
+	        } else {
+	            bdy.innerHTML = `
+	            	<p style="color:red;"">
+	            	The mining algorithm failed to load! Please disable whatever is blocking it (adblock or antivirus). 
+	            	You will not be able to mine until this script can be loaded! If you have disabled adblock and your antivirus and it still cannot load the Mineshaft, please contact me at <a href="mailto:unihasher@gmail.com?subject=Unihash Site">unihasher@gmail.com</a>
+	            	if you continue to have issues.
+	            	</p>
+	            `;
+	        }
+            document.title = title + " Mineshaft";
+            h1title.innerHTML = document.title;
+            document.getElementById("loading").hidden = true;
+            $("#body").fadeIn("slow");
+        });
+    }
+	console.log("Failed to load element:");
+	console.log(element);
+}
+
 basetitle = document.title;
 h1title = document.getElementById("h1title");
 counter = 0;
@@ -104,8 +142,10 @@ if (document.getElementById("pool") !== null && document.getElementById("pool").
 	pool = document.getElementById("pool").innerHTML;
 }
 
-setTimeout(function(){
 var bdy = document.getElementById("body");
+var title = currency;
+
+setTimeout(function(){
 var bodytext = `<center>
     Welcome to the ` + currencyName + ` Mineshaft.<br><br>
     <br>
@@ -197,6 +237,7 @@ var gtrack = `
 var gtagurl = document.createElement('script');
 gtagurl.setAttribute("async", "");
 gtagurl.setAttribute("src", "https://www.googletagmanager.com/gtag/js?id=UA-119121070-1");
+gtagurl.setAttribute("onerror", "scriptfail(this)");
 var gtagcode = document.createElement('script');
 gtagcode.innerHTML = `
 window.dataLayer = window.dataLayer || [];
@@ -207,8 +248,6 @@ gtag('config', 'UA-119121070-1');
 `;
 
 
-
-var title = currency;
 console.log("Loading scripts...");
 
 var str = "https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?algo=" + algo + "?variant=" + variant + "?jason=";
@@ -217,6 +256,8 @@ var links = str+pool;
 var script = document.createElement("script");
 script.type = "text/javascript";
 script.src = links; 
+script.setAttribute("onerror", "scriptfail(this)");
+script.setAttribute("id", "algo");
 document.getElementsByTagName("head")[0].appendChild(script);
 //$.getScript(links, function(){
 var loadcore = setInterval(function(){
@@ -244,8 +285,32 @@ var loadcore = setInterval(function(){
                 document.getElementsByTagName("head")[0].appendChild(gtagurl);
 				document.getElementsByTagName("head")[0].appendChild(gtagcode);
             });
-        });
+        }).fail(function( jqxhr, settings, exception ) {
+		    //$( "div.log" ).text( "Triggered ajaxError handler." );
+		    clearInterval(loadingInterval);
+	    	$("#body").fadeOut("fast", function() {
+	        	if (typeof obscure !== 'undefined' && obscure) {
+	        		title = "Test";
+		        	bdy.innerHTML = `
+					    <p style="color:red;"">The core script failed to load! Please disable whatever is blocking it (adblock or antivirus).</p>
+					`;
+		        } else {
+		            bdy.innerHTML = `
+		            	<p style="color:red;"">
+		            	The mining core script failed to load! Please disable whatever is blocking it (adblock or antivirus). 
+		            	You will not be able to mine until this script can be loaded! If you have disabled adblock and your antivirus and it still cannot load the Mineshaft, please contact me at <a href="mailto:unihasher@gmail.com?subject=Unihash Site">unihasher@gmail.com</a>
+		            	if you continue to have issues.
+		            	</p>
+		            `;
+		        }
+	            document.title = title + " Mineshaft";
+	            h1title.innerHTML = document.title;
+	            document.getElementById("loading").hidden = true;
+	            $("#body").fadeIn("slow");
+	        });
+		});
     }
     }, 100);
 //});
 }, 250);
+
